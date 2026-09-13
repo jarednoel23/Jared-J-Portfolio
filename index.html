@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jared Julien — Communications & Legal Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAF8F4;
+    --ink: #1C2331;
+    --ink-soft: #333d4d;
+    --accent: #7A1F2B;
+    --muted: #5B6472;
+    --line: #DDD7C9;
+    --paper-raised: #F3EFE6;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* Nav */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(250, 248, 244, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+    z-index: 10;
+  }
+  nav .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  nav .brand {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+  nav .brand:hover { text-decoration: none; }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+  }
+  nav ul a {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+  }
+  nav ul a:hover { color: var(--accent); }
+
+  @media (max-width: 560px) {
+    nav ul { gap: 14px; }
+    nav ul a { font-size: 0.82rem; }
+  }
+
+  /* Hero */
+  .hero {
+    padding: 88px 0 64px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero .eyebrow {
+    color: var(--accent);
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: clamp(2.3rem, 5.5vw, 3.4rem);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+  }
+  .hero p.role {
+    margin-top: 18px;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 46ch;
+  }
+  .hero .rule {
+    width: 64px;
+    height: 3px;
+    background: var(--accent);
+    margin-top: 28px;
+    border: none;
+  }
+
+  section {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  .section-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .section-label .num {
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 26px;
+  }
+
+  /* About */
+  .about p {
+    max-width: 62ch;
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+  }
+  .about p:last-child { margin-bottom: 0; }
+
+  /* Resume */
+  .resume-group {
+    margin-bottom: 36px;
+  }
+  .resume-group:last-child { margin-bottom: 0; }
+  .resume-group h3 {
+    font-size: 1.05rem;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    margin-bottom: 18px;
+    text-transform: none;
+  }
+
+  .entry {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 20px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+  }
+  .entry:first-of-type { border-top: none; padding-top: 0; }
+
+  .entry .when {
+    color: var(--muted);
+    font-size: 0.88rem;
+    padding-top: 3px;
+  }
+  .entry .what h4 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 0 0 2px;
+    color: var(--ink);
+  }
+  .entry .what .where {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+  .entry .what p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.96rem;
+  }
+
+  @media (max-width: 560px) {
+    .entry { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    margin-top: 4px;
+  }
+  .tag-list span {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    padding-right: 10px;
+    border-right: 1px solid var(--line);
+  }
+  .tag-list span:last-child { border-right: none; }
+
+  /* Projects */
+  .case {
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+  }
+  .case:first-of-type { border-top: none; padding-top: 0; }
+  .case .case-meta {
+    color: var(--muted);
+    font-size: 0.86rem;
+    margin-bottom: 6px;
+  }
+  .case h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  .case p {
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 62ch;
+  }
+  .case .methods {
+    margin-top: 12px;
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+  .case .methods b { color: var(--ink-soft); font-weight: 600; }
+
+  /* Contact */
+  .contact p {
+    color: var(--ink-soft);
+    max-width: 52ch;
+    margin: 0 0 24px;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .contact-links a {
+    font-size: 1.05rem;
+    color: var(--ink);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 10px;
+    width: fit-content;
+  }
+  .contact-links a:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+
+  footer {
+    padding: 32px 0 48px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Jared Julien</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div id="top"></div>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Communications &amp; Pre-Law</div>
+    <h1>Jared Julien</h1>
+    <p class="role">Communications student at Rollins College, building a foundation in research, public trust, and persuasive communication on the way to law school.</p>
+    <hr class="rule">
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-label"><span class="num">01</span> — About</div>
+    <h2>Bio</h2>
+    <div class="about">
+      <p>I'm a Communications major at Rollins College with my sights set on law school. Most of what I study comes back to the same question: what actually makes people trust a message, and what makes them tune it out. I've gotten to explore that through research methods, health communication, legal communication, and a community internship at the Orlando Science Center.</p>
+      <p>Outside of coursework, I'm involved with the Black Student Union, Pre-Law Society, Caribbean Student Union, and Board Game Club at Rollins, and I co-founded the Saint Cloud Pickleball Club back home. I also spend a fair amount of time on a sports commentary account on X, and I play bass, piano, and violin when I get the chance.</p>
+    </div>
+  </div>
+</section>
+
+<section id="resume">
+  <div class="wrap">
+    <div class="section-label"><span class="num">02</span> — Resume</div>
+    <h2>Education &amp; Experience</h2>
+
+    <div class="resume-group">
+      <h3>Education</h3>
+      <div class="entry">
+        <div class="when">2023 – 2027</div>
+        <div class="what">
+          <h4>Rollins College</h4>
+          <div class="where">Winter Park, FL · B.A., Communications</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="when">2019 – 2023</div>
+        <div class="what">
+          <h4>NeoCity Academy</h4>
+          <div class="where">Kissimmee, FL · GPA 3.8</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resume-group">
+      <h3>Experience</h3>
+      <div class="entry">
+        <div class="when">Aug 2025 – Jan 2026</div>
+        <div class="what">
+          <h4>Community Initiatives Intern</h4>
+          <div class="where">Orlando Science Center · Orlando, FL</div>
+          <p>Supported partnership outreach and community engagement, assisted with event logistics, and collaborated with staff to help run Science Center programs and exhibits.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="when">Jan 2024 – May 2025</div>
+        <div class="what">
+          <h4>Student Intern</h4>
+          <div class="where">Curriculum Associates · Saint Cloud, FL</div>
+          <p>Supported daily operations by reviewing documents, assisting supervisors, communicating with clients, and helping prepare community resources.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="when">Jan 2024 – May 2025</div>
+        <div class="what">
+          <h4>In-Store Associate / Delivery Driver</h4>
+          <div class="where">Jimmy John's · Orlando, FL</div>
+          <p>Handled point-of-sale operations, guest service, order accuracy, and closing procedures in a fast-paced environment.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="when">Mar 2020 – Present</div>
+        <div class="what">
+          <h4>E-Commerce Merchant</h4>
+          <div class="where">Self-Employed</div>
+          <p>Managed online sales end to end, from market research and listings to buyer communication and coordinating inventory across multiple products.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="resume-group">
+      <h3>Volunteering</h3>
+      <div class="entry">
+        <div class="when">2022 – 2023</div>
+        <div class="what">
+          <h4>Volunteer</h4>
+          <div class="where">Give Kids the World Village · Kissimmee, FL</div>
+          <p>Provided guest services for children with critical illnesses and their families, including meal delivery and operating the Village carousel.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="when">2021 – 2022</div>
+        <div class="what">
+          <h4>Volunteer</h4>
+          <div class="where">Osceola Council on Aging Food Pantry · Kissimmee, FL</div>
+          <p>Supported pantry operations, from organizing and rotating stock to assisting community members directly.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="resume-group">
+      <h3>Skills</h3>
+      <div class="tag-list">
+        <span>Research &amp; analysis</span>
+        <span>Public communication</span>
+        <span>Writing</span>
+        <span>Microsoft Office &amp; Excel</span>
+        <span>Canva &amp; Prismm</span>
+        <span>Leadership</span>
+        <span>Customer service</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-label"><span class="num">03</span> — Projects</div>
+    <h2>Case Files</h2>
+
+    <div class="case">
+      <div class="case-meta">COM 285 · Research Methods in Communication</div>
+      <h3>Music, Identity, and Belonging</h3>
+      <p>A mixed-methods research project examining how social, emotional, and identity factors shape college students' music preferences. My team ran semi-structured interviews and built a 20-question Qualtrics survey, then analyzed the results through Uses and Gratifications Theory, Mood Management Theory, Social Identity Theory, and the Five-Factor Model of Musical Preferences.</p>
+      <div class="methods"><b>Methods:</b> Qualitative interviews, quantitative survey design, thematic analysis</div>
+    </div>
+
+    <div class="case">
+      <div class="case-meta">Health Communication</div>
+      <h3>Mobile Health: Innovation Meets Ethics</h3>
+      <p>A presentation on how mobile technologies, from telehealth to wearable fitness trackers, are reshaping healthcare access. The project also dug into the ethical tension behind the convenience: data privacy, unequal access to technology, and where healthcare organizations have to draw the line between innovation and responsibility.</p>
+      <div class="methods"><b>Focus:</b> Digital health, data privacy, patient trust</div>
+    </div>
+
+    <div class="case">
+      <div class="case-meta">Senior Seminar in Communication</div>
+      <h3>What Actually Makes Someone a Good Listener</h3>
+      <p>An applied look at Active-Empathic Listening, breaking listening down into three measurable stages: sensing, processing, and responding. The most interesting finding was that visible warmth, eye contact, nodding, and smiling barely separated good listeners from bad ones. The real difference showed up in the parts nobody can see you doing.</p>
+      <div class="methods"><b>Focus:</b> Interpersonal communication, professional application</div>
+    </div>
+
+    <div class="case">
+      <div class="case-meta">COM 225 · Legal Communication</div>
+      <h3>Communicating Under Legal and Ethical Constraints</h3>
+      <p>Coursework exploring how legal considerations, privacy, defamation, copyright, and free expression, shape how organizations and individuals communicate responsibly. This work sits at the intersection of my communications background and my interest in law, and it's part of what pushed me toward Rollins' Pre-Law Society.</p>
+      <div class="methods"><b>Focus:</b> Legal communication, ethics, credibility</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-label"><span class="num">04</span> — Contact</div>
+    <h2>Get in touch</h2>
+    <div class="contact">
+      <p>I'm always glad to talk communications, research, or law school plans. Reach out below.</p>
+      <div class="contact-links">
+        <a href="mailto:jarednoel23@gmail.com">jarednoel23@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Jared Julien · Rollins College
+  </div>
+</footer>
+
+</body>
+</html>
